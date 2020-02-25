@@ -19,11 +19,6 @@ $api->version('v1', function (Router $api) {
 
     });
 
-    $api->group(['middleware' => ['web'], 'prefix' => 'auth'], function(Router $api) {
-        $api->get('{provider}', 'App\\Api\\V1\\Controllers\\SocialController@redirectToProvider');
-        $api->get('{provider}/callback', 'App\\Api\\V1\\Controllers\\SocialController@handleProviderCallback');
-    });
-
     $api->group(['middleware' => 'jwt.auth'], function(Router $api) {
         $api->get('protected', function() {
             return response()->json([
