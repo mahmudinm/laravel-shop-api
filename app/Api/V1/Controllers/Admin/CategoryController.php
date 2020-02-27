@@ -40,7 +40,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         
         return response()->json($category);
     }    

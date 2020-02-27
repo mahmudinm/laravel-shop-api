@@ -12,8 +12,12 @@ $api->version('v1', function (Router $api) {
     $api->get('product/{id}', 'App\\Api\\V1\\Controllers\\ProductController@show');
 
     $api->get('checkout', 'App\\Api\\V1\\Controllers\\CheckoutController@index');
+    $api->post('checkout', 'App\\Api\\V1\\Controllers\\CheckoutController@store');
     $api->get('checkout/city/{city}', 'App\\Api\\V1\\Controllers\\CheckoutController@getCity');
     $api->get('checkout/district/{district}', 'App\\Api\\V1\\Controllers\\CheckoutController@getDistrict');
+
+    $api->get('payment/{invoice}', 'App\\Api\\V1\\Controllers\\PaymentController@index');
+    $api->post('payment', 'App\\Api\\V1\\Controllers\\PaymentController@store');
 
     $api->group(['prefix' => 'auth'], function(Router $api) {
         $api->post('signup', 'App\\Api\\V1\\Controllers\\SignUpController@signUp');
