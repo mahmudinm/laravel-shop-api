@@ -7,7 +7,9 @@ $api = app(Router::class);
 
 $api->version('v1', function (Router $api) {
 
-    $api->resource('product', 'App\\Api\\V1\\Controllers\\ProductController');
+    $api->get('/', 'App\\Api\\V1\\Controllers\\HomeController@index');
+    $api->get('product', 'App\\Api\\V1\\Controllers\\ProductController@index');
+    $api->get('product/{id}', 'App\\Api\\V1\\Controllers\\ProductController@show');
 
     $api->get('checkout', 'App\\Api\\V1\\Controllers\\CheckoutController@index');
     $api->get('checkout/city/{city}', 'App\\Api\\V1\\Controllers\\CheckoutController@getCity');
